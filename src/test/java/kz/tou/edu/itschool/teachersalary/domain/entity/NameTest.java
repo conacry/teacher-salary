@@ -3,6 +3,7 @@ package kz.tou.edu.itschool.teachersalary.domain.entity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import kz.tou.edu.itschool.teachersalary.domain.entity.exception.EmptyNameValueException;
 import org.junit.jupiter.api.Test;
 
 class NameTest {

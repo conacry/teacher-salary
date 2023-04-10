@@ -1,5 +1,7 @@
 package kz.tou.edu.itschool.teachersalary.domain.entity;
 
+import kz.tou.edu.itschool.teachersalary.domain.entity.exception.EmptyNameValueException;
+
 public class Name {
 
     private String value;

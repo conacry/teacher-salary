@@ -1,5 +1,8 @@
 package kz.tou.edu.itschool.teachersalary.domain.entity;
 
+import kz.tou.edu.itschool.teachersalary.domain.entity.exception.TeacherIsNullException;
+import kz.tou.edu.itschool.teachersalary.domain.entity.exception.WorkDaysIsNullException;
+
 import java.util.Map;
 
 public class TeacherSalaryCalculator {
@@ -35,9 +38,15 @@ public class TeacherSalaryCalculator {
         }
     }
 
-    //TODO: Переделать на возврат Salary
-    public int calcSalary(Teacher teacher, int workedDays) {
+    public int calcSalary(Teacher teacher, WorkDays workedDays) {
+        if (teacher == null) {
+            throw new TeacherIsNullException();
+        }
+        if (workedDays == null) {
+            throw new WorkDaysIsNullException();
+        }
         var calculator = salaryCalculators.get(teacher.getQualification());
-        return calculator.calc(teacher, workedDays);
+        return calculator.calc(teacher, workedDays.getValue());
     }
+
 }

@@ -1,4 +1,4 @@
-package kz.tou.edu.itschool.teachersalary.domain.entity;
+package kz.tou.edu.itschool.teachersalary.domain.entity.exception;
 
 public class EmptyNameValueException extends RuntimeException {
 
