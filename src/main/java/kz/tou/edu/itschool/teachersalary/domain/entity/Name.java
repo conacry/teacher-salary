@@ -4,13 +4,17 @@ import kz.tou.edu.itschool.teachersalary.domain.entity.exception.EmptyNameValueE
 
 public class Name {
 
-    private String value;
+    private final String value;
 
-    public Name(String nameStr) {
+    public static Name of(String nameStr) {
         if (nameStr == null || nameStr.isBlank()) {
             throw new EmptyNameValueException();
         }
 
+        return new Name(nameStr);
+    }
+
+    private Name(String nameStr) {
         this.value = nameStr;
     }
 

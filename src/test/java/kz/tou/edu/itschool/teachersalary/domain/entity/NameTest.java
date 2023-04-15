@@ -7,22 +7,22 @@ import kz.tou.edu.itschool.teachersalary.domain.entity.exception.EmptyNameValueE
 import org.junit.jupiter.api.Test;
 
 class NameTest {
-    
+
     @Test
-    void name_NameStrIsNull_ThrowException() {
-        assertThrows(EmptyNameValueException.class, () -> new Name(null));
+    void of_NameStrIsNull_ThrowException() {
+        assertThrows(EmptyNameValueException.class, () -> Name.of(null));
     }
 
     @Test
-    void name_NameStrIsEmpty_ThrowException() {
+    void of_NameStrIsEmpty_ThrowException() {
         var emptyStr = "";
-        assertThrows(EmptyNameValueException.class, () -> new Name(emptyStr));
+        assertThrows(EmptyNameValueException.class, () -> Name.of(emptyStr));
     }
 
     @Test
-    void name_NameStrIsValid_NameIsCreated() {
+    void of_NameStrIsValid_NameIsCreated() {
         var validNameStr = "coolName";
-        var name = new Name(validNameStr);
+        var name = Name.of(validNameStr);
         assertEquals(validNameStr, name.getValue());
     }
 }
