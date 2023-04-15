@@ -5,19 +5,24 @@ import java.util.UUID;
 public class Teacher {
 
     private final UUID id;
+
+    private int serialNumber;
+
     private Name firstName;
     private Name lastName;
     private Qualification qualification;
-    private int experience;
+    private TeacherExperience experience;
 
     private Teacher(
             UUID id,
+            int serialNumber,
             Name firstName,
             Name lastName,
             Qualification qualification,
-            int experience
+            TeacherExperience experience
     ) {
         this.id = id;
+        this.serialNumber = serialNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.qualification = qualification;
@@ -26,6 +31,10 @@ public class Teacher {
 
     public UUID getId() {
         return id;
+    }
+
+    public int getSerialNumber() {
+        return this.serialNumber;
     }
 
     public Name getFirstName() {
@@ -40,22 +49,30 @@ public class Teacher {
         return qualification;
     }
 
-    public int getExperience() {
+    public TeacherExperience getExperience() {
         return experience;
     }
 
     public static class TeacherBuilder {
         private UUID id;
+
+        private int serialNumber;
+
         private Name firstName;
         private Name lastName;
         private Qualification qualification;
-        private int experience;
+        private TeacherExperience experience;
 
         public TeacherBuilder() {
         }
 
-        public TeacherBuilder UUID(UUID id) {
+        public TeacherBuilder id(UUID id) {
             this.id = id;
+            return this;
+        }
+
+        public TeacherBuilder serialNumber(int serialNumber) {
+            this.serialNumber = serialNumber;
             return this;
         }
 
@@ -74,7 +91,7 @@ public class Teacher {
             return this;
         }
 
-        public TeacherBuilder experience(int experience) {
+        public TeacherBuilder experience(TeacherExperience experience) {
             this.experience = experience;
             return this;
         }
@@ -83,6 +100,7 @@ public class Teacher {
             //Validation
             return new Teacher(
                     this.id,
+                    this.serialNumber,
                     this.firstName,
                     this.lastName,
                     this.qualification,

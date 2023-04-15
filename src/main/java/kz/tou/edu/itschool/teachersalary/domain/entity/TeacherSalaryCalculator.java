@@ -29,9 +29,9 @@ public class TeacherSalaryCalculator {
     }
 
     private static int calcHighTeacherSalary(Teacher teacher, int workedDays) {
-        if (teacher.getExperience() > 10 && teacher.getExperience() < 20) {
+        if (teacher.getExperience().getValue() > 10 && teacher.getExperience().getValue() < 20) {
             return TEN_YEARS_BONUS * HIGH_TEACHER_BONUS * ONE_HOUR_COST * workedDays;
-        } else if (teacher.getExperience() > 20) {
+        } else if (teacher.getExperience().getValue() > 20) {
             return TWENTY_YEARS_BONUS * HIGH_TEACHER_BONUS * ONE_HOUR_COST * workedDays;
         } else {
             return HIGH_TEACHER_BONUS * ONE_HOUR_COST * workedDays;
