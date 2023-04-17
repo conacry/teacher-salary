@@ -1,8 +1,6 @@
 package kz.tou.edu.itschool.teachersalary.domain.entity;
 
-import kz.tou.edu.itschool.teachersalary.domain.entity.exception.LargeDaysValueException;
-import kz.tou.edu.itschool.teachersalary.domain.entity.exception.NegativeDaysValueException;
-import kz.tou.edu.itschool.teachersalary.domain.entity.exception.NegativeTeacherExperienceValue;
+import kz.tou.edu.itschool.teachersalary.domain.entity.exception.NegativeTeacherExperienceValueException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,7 +11,7 @@ class TeacherExperienceTest {
     @Test
     void of_intExperienceIsNegativeValue_throwException() {
         var negativeExperience = -20;
-        assertThrows(NegativeTeacherExperienceValue.class, () ->TeacherExperience.of(negativeExperience));
+        assertThrows(NegativeTeacherExperienceValueException.class, () ->TeacherExperience.of(negativeExperience));
     }
 
     @Test

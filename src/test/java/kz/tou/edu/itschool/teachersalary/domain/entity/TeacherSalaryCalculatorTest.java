@@ -5,6 +5,8 @@ import kz.tou.edu.itschool.teachersalary.domain.entity.exception.WorkDaysIsNullE
 import kz.tou.edu.itschool.teachersalary.testDouble.stub.TeacherStub;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -28,7 +30,7 @@ class TeacherSalaryCalculatorTest {
         var highQualificationTeacher = TeacherStub.getHighQualificationTeacherWith10Years();
         var workDays = WorkDays.of(20);
 
-        var expectedSalary = 60000;
+        var expectedSalary = BigDecimal.valueOf(60000);
 
         var actualSalary = salaryCalc.calcSalary(highQualificationTeacher, workDays);
         assertEquals(expectedSalary, actualSalary);
@@ -40,7 +42,7 @@ class TeacherSalaryCalculatorTest {
         var mediumQualificationTeacher = TeacherStub.getMediumQualificationTeacher();
         var workDays = WorkDays.of(20);
 
-        var expectedSalary = 40000;
+        var expectedSalary = BigDecimal.valueOf(40000);
 
         var actualSalary = salaryCalc.calcSalary(mediumQualificationTeacher, workDays);
         assertEquals(expectedSalary, actualSalary);
@@ -52,7 +54,7 @@ class TeacherSalaryCalculatorTest {
         var lowQualificationTeacher = TeacherStub.getLowQualificationTeacher();
         var workDays = WorkDays.of(20);
 
-        var expectedSalary = 20000;
+        var expectedSalary = BigDecimal.valueOf(20000);
 
         var actualSalary = salaryCalc.calcSalary(lowQualificationTeacher, workDays);
         assertEquals(expectedSalary, actualSalary);

@@ -4,5 +4,5 @@ public record TeacherSalaryData(
         int serialNumber,
         String firstName,
         String lastName,
-        int salary
+        String salary
 ) {}

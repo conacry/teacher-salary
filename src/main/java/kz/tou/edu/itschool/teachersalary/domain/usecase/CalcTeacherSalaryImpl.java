@@ -16,26 +16,25 @@ public class CalcTeacherSalaryImpl implements CalcTeacherSalary {
 
     @Override
     public List<TeacherSalaryData> execute(List<TeacherWorkDayData> teacherWorkDayDataList) {
-        var teacherSalaries = new ArrayList<TeacherSalaryData>();
+        return teacherWorkDayDataList.stream().
+                map(this::doTeacherSalaryCalculation).
+                toList();
+    }
 
-        for (TeacherWorkDayData worData : teacherWorkDayDataList) {
-            var workDays = WorkDays.of(worData.workDays());
+    private TeacherSalaryData doTeacherSalaryCalculation(TeacherWorkDayData workData) {
+        var workDays = WorkDays.of(workData.workDays());
 
-            var teacher = teacherRepository.getTeacherBySerialNumber(worData.serialNumber());
+        var teacherOpt = teacherRepository.getTeacherBySerialNumber(workData.serialNumber());
+        var teacher = teacherOpt.orElseThrow(TeacherNotFoundException::new);
 
-            var salaryCalculator = new TeacherSalaryCalculator();
-            var amount = salaryCalculator.calcSalary(teacher, workDays);
+        var salaryCalculator = new TeacherSalaryCalculator();
+        var amount = salaryCalculator.calcSalary(teacher, workDays);
 
-            var teacherSalary = new TeacherSalaryData(
-                    teacher.getSerialNumber(),
-                    teacher.getFirstName().getValue(),
-                    teacher.getLastName().getValue(),
-                    amount
-            );
-
-            teacherSalaries.add(teacherSalary);
-        }
-
-        return teacherSalaries;
+        return new TeacherSalaryData(
+                teacher.getSerialNumber(),
+                teacher.getFirstName().getValue(),
+                teacher.getLastName().getValue(),
+                amount.toPlainString()
+        );
     }
 }

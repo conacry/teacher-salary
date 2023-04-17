@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -35,5 +36,16 @@ class CalcTeacherSalaryImplTest {
         teacherWorkDayData.add(workDayData);
 
         assertThrows(RuntimeException.class, () -> this.calcTeacherSalary.execute(teacherWorkDayData));
+    }
+
+    @Test
+    void execute_RepoReturnNull_() {
+        when(teacherRepository.getTeacherBySerialNumber(anyInt())).thenReturn(Optional.empty());
+
+        var teacherWorkDayData = new ArrayList<TeacherWorkDayData>();
+        var workDayData = new TeacherWorkDayData(123, 10);
+        teacherWorkDayData.add(workDayData);
+
+        assertThrows(TeacherNotFoundException.class, () -> this.calcTeacherSalary.execute(teacherWorkDayData));
     }
 }

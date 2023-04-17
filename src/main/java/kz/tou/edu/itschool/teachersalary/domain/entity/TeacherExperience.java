@@ -1,6 +1,6 @@
 package kz.tou.edu.itschool.teachersalary.domain.entity;
 
-import kz.tou.edu.itschool.teachersalary.domain.entity.exception.NegativeTeacherExperienceValue;
+import kz.tou.edu.itschool.teachersalary.domain.entity.exception.NegativeTeacherExperienceValueException;
 
 public class TeacherExperience {
 
@@ -8,7 +8,7 @@ public class TeacherExperience {
 
     public static TeacherExperience of(int intExperience) {
         if (intExperience < 0) {
-            throw new NegativeTeacherExperienceValue();
+            throw new NegativeTeacherExperienceValueException();
         }
 
         return new TeacherExperience(intExperience);

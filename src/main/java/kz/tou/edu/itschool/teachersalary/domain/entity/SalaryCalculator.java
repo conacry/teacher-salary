@@ -1,5 +1,7 @@
 package kz.tou.edu.itschool.teachersalary.domain.entity;
 
+import java.math.BigDecimal;
+
 public interface SalaryCalculator {
-    int calc(Teacher teacher, int workedDays);
+    BigDecimal calc(Teacher teacher, int workedDays);
 }
