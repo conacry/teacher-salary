@@ -48,5 +48,4 @@ public class TeacherSalaryCalculator {
         var calculator = salaryCalculators.get(teacher.getQualification());
         return calculator.calc(teacher, workedDays.getValue());
     }
-
 }

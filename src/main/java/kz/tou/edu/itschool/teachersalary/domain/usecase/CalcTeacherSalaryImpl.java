@@ -24,13 +24,13 @@ public class CalcTeacherSalaryImpl implements CalcTeacherSalary {
             var teacher = teacherRepository.getTeacherBySerialNumber(worData.serialNumber());
 
             var salaryCalculator = new TeacherSalaryCalculator();
-            var salary = salaryCalculator.calcSalary(teacher, workDays);
+            var amount = salaryCalculator.calcSalary(teacher, workDays);
 
             var teacherSalary = new TeacherSalaryData(
                     teacher.getSerialNumber(),
                     teacher.getFirstName().getValue(),
                     teacher.getLastName().getValue(),
-                    salary
+                    amount
             );
 
             teacherSalaries.add(teacherSalary);
