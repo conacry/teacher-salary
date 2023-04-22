@@ -108,4 +108,16 @@ public class Teacher {
             );
         }
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", serialNumber=" + serialNumber +
+                ", firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", qualification=" + qualification +
+                ", experience=" + experience +
+                '}';
+    }
 }
