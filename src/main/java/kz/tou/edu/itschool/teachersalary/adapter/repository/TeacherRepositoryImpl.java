@@ -20,6 +20,6 @@ public class TeacherRepositoryImpl implements TeacherRepository {
 
     @Override
     public Optional<Teacher> getTeacherBySerialNumber(int serialNumber) {
-        return Optional.empty();
+        return Optional.ofNullable(this.storage.get(serialNumber));
     }
 }
