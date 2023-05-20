@@ -2,10 +2,13 @@ package kz.tou.edu.itschool.teachersalary.domain.usecase;
 
 import kz.tou.edu.itschool.teachersalary.domain.entity.TeacherSalaryCalculator;
 import kz.tou.edu.itschool.teachersalary.domain.entity.WorkDays;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CalcTeacherSalaryImpl implements CalcTeacherSalary {
 
     private TeacherRepository teacherRepository;

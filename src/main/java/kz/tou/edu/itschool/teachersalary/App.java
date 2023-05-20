@@ -4,29 +4,18 @@ import kz.tou.edu.itschool.teachersalary.adapter.controller.TeacherCsvController
 import kz.tou.edu.itschool.teachersalary.adapter.repository.TeacherRepositoryImpl;
 import kz.tou.edu.itschool.teachersalary.domain.usecase.CalcTeacherSalaryImpl;
 import kz.tou.edu.itschool.teachersalary.domain.usecase.SaveTeachersDataImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 
-/**
- * Hello world!
- *
- */
+@SpringBootApplication
 public class App {
-    
-    public static void main(String[] args) throws FileNotFoundException {
-        var teacherRepo = new TeacherRepositoryImpl();
-        var saveTeacherUseCase = new SaveTeachersDataImpl(teacherRepo);
-        var calcTeacherSalary = new CalcTeacherSalaryImpl(teacherRepo);
-        var controller = new TeacherCsvController(
-                saveTeacherUseCase,
-                calcTeacherSalary
-        );
 
-        controller.saveTeachersFromCsv(Path.of("etc/csv/teacherData.csv"));
-        controller.calcTeacherSalary(
-                Path.of("etc/csv/teacherWorkDays.csv"),
-                Path.of("etc/csv/teacherSalary.csv")
-        );
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
     }
 }
